@@ -100,3 +100,4 @@ source $OSH/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+
