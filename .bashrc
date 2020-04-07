@@ -101,3 +101,18 @@ source $OSH/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 
+PATH=$PATH:~/.local/bin
+
+
+#####################################################################
+#       Opam switch shell hook                                      #
+#####################################################################
+_opam_env_hook() {                                                  #
+ local previous_exit_status=$?;                                     #
+ eval $(opam env --shell=bash --readonly 2> /dev/null);             #
+ return $previous_exit_status;                                      #
+};                                                                  #
+if ! [[ "$PROMPT_COMMAND" =~ _opam_env_hook ]]; then                #
+    PROMPT_COMMAND="_opam_env_hook;$PROMPT_COMMAND";                #
+fi                                                                  #
+#####################################################################
