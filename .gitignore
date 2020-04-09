@@ -14,3 +14,15 @@
 # dotfiles add -f .bashrc
 # dotfiles commit -m "Add .bashrc"
 # dotfiles push
+
+#####################################################################
+#     Gnome settings                                                #
+#                                                                   #
+# to backup all dconf settings like gnome, tilix etc, run:          #
+# dconf dump / > .dconf.ini                                         #
+# dotfiles add -f .dconf.ini                                        #
+# ...                                                               #
+#                                                                   #
+# to apply the backup, run:                                         #
+# dconf load / < .dconf.ini                                         #
+#####################################################################
