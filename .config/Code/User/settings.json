@@ -1,0 +1,48 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.minimap.enabled": true,
+    "explorer.confirmDelete": false,
+    "diffEditor.renderSideBySide": true,
+    "files.autoSave": "onFocusChange",
+    "explorer.confirmDragAndDrop": false,
+    "latex-utilities.message.update.show": false,
+    "latex-workshop.view.pdf.viewer": "browser",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "latex-workshop.message.update.show": false,
+    "python.showStartPage": false,
+    "vim.changeWordIncludesWhitespace": true,
+    "window.menuBarVisibility": "default",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.fontSize": 16,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.languageServer": "Microsoft",
+    "sonarlint.rules": {
+        "java:S1192": {
+            "level": "off"
+        },
+        "java:S106": {
+            "level": "off"
+        },
+        "python:S2208": {
+            "level": "off"
+        },
+        "python:S1192": {
+            "level": "off"
+        }
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "window.zoomLevel": 1
+}
