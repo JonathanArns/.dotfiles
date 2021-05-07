@@ -3,7 +3,7 @@ export OSH=/home/jonathan/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="powerline-multiline"
+OSH_THEME="luan"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,7 +82,7 @@ source $OSH/oh-my-bash.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-Preferred editor for local and remote sessions
+# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else

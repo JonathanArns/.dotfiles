@@ -1,6 +1,6 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
     "diffEditor.renderSideBySide": true,
     "files.autoSave": "onFocusChange",
@@ -11,7 +11,7 @@
     "latex-workshop.message.update.show": false,
     "python.showStartPage": false,
     "vim.changeWordIncludesWhitespace": true,
-    "window.menuBarVisibility": "default",
+    "window.menuBarVisibility": "compact",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "editor.fontSize": 16,
@@ -44,5 +44,12 @@
         "**/.settings": true,
         "**/.factorypath": true
     },
+    "vim.foldfix": true,
+    "vim.showMarksInGutter": true,
+    "vim.smartRelativeLine": true,
+    "vim.useSystemClipboard": true,
+    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Gruvbox Minor Dark Hard",
     "window.zoomLevel": 1
 }
