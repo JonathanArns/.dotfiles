@@ -104,7 +104,9 @@ fi
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias icat="kitty +kitten icat --align=left"
 
 PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.cargo/bin
 
+set -o vi
