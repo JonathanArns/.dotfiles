@@ -10,7 +10,6 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "latex-workshop.message.update.show": false,
     "python.showStartPage": false,
-    "vim.changeWordIncludesWhitespace": true,
     "window.menuBarVisibility": "compact",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
@@ -51,5 +50,6 @@
     "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Gruvbox Minor Dark Hard",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "go.toolsManagement.autoUpdate": true
 }
