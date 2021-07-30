@@ -2,7 +2,15 @@ local export = {}
 local vimp = require('vimp')
 vimp.always_override = true
 
+-- general
+vimp.nnoremap('J', 'mzJ`z') -- keep cursor position on J
+vimp.inoremap('.', '.<C-g>u') -- make . an undo point
+vimp.inoremap(',', ',<C-g>u')
+vimp.vnoremap('J', [[:m '>+1<CR>gv=gv]]) -- move around lines in visual mode
+vimp.vnoremap('K', [[:m '<-2<CR>gv=gv]])
+
 -- windows
+vimp.nnoremap('<leader>w', ':close<CR>')
 vimp.nnoremap('<leader>/', ':vsplit<CR><C-w>l')
 vimp.nnoremap('<leader>-', ':split<CR><C-w>j')
 vimp.nnoremap('<C-h>', '<C-w>h')
@@ -18,7 +26,14 @@ vimp.vnoremap('p', '"_dP') -- don't yank replaced text after paste in visual mod
 -- comments
 vimp.nnoremap('<C-_>', ":CommentToggle<CR>")
 vimp.vnoremap('<C-_>', ":CommentToggle<CR>")
-vimp.nnoremap('<leader>c', ":CommentToggle<CR>")
+
+-- quickfix list & location list
+vimp.nnoremap('<leader>cn', ':cnext<CR>zzzv')
+vimp.nnoremap('<leader>cp', ':cprev<CR>zzzv')
+vimp.nnoremap('<leader>co', ':copen<CR>')
+vimp.nnoremap('<leader>ln', ':lnext<CR>zzzv')
+vimp.nnoremap('<leader>lp', ':lprev<CR>zzzv')
+vimp.nnoremap('<leader>lo', ':lopen<CR>')
 
 -- fuzzy finder (telescope)
 vimp.nnoremap('<leader>ff', require'telescope.builtin'.find_files)
@@ -39,7 +54,6 @@ export.on_attach_lsp = function(client, bufid)
 		vimp.nnoremap({'silent'}, '<leader>F', vim.lsp.buf.formatting)
 	end)
 end
-
 
 -- completion
 vimp.inoremap({'expr'}, '<Tab>', require'completion'.tab_complete)

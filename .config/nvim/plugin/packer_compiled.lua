@@ -79,6 +79,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  neovimplugin = {
+    loaded = true,
+    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/neovimplugin"
+  },
   ["nvim-comment"] = {
     config = { "\27LJ\2\2R\0\0\2\0\4\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0B\0\2\1K\0\1\0\1\0\1\20create_mappings\1\nsetup\17nvim_comment\frequire\0" },
     loaded = true,

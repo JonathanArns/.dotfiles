@@ -1,6 +1,4 @@
-local opt = vim.opt
 local fn = vim.fn
-local g = vim.g
 
 -- this compiles on saving this file
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
@@ -16,6 +14,8 @@ end
 
 -- this declares all of our plugins
 return require('packer').startup(function(use)
+	use '~/workspace/neovimplugin'
+
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
 	use {
@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
 			vim.cmd('colorscheme onehalfdark')
 		end
 	}
+	-- use { 'vim-airline/vim-airline' }
 	use {
 		'hoob3rt/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
