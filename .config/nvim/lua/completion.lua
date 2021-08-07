@@ -1,3 +1,4 @@
+local M = {}
 vim.opt.completeopt = 'menuone,noselect'
 
 require'compe'.setup {
@@ -5,28 +6,29 @@ require'compe'.setup {
   autocomplete = true;
   debug = false;
   min_length = 1;
-  preselect = 'enable';
+  preselect = 'disable';
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  documentation = false;
+  documentation = true;
 
   source = {
     path = true;
     buffer = true;
     calc = true;
-    vsnip = true;
+    vsnip = false;
     nvim_lsp = true;
     nvim_lua = true;
     spell = true;
     tags = true;
-    snippets_nvim = true;
+    snippets_nvim = false;
     treesitter = true;
   };
 }
+
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -40,11 +42,10 @@ local check_back_space = function()
     end
 end
 
-local export = {}
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
-export.tab_complete = function()
+M.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
   -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
@@ -55,7 +56,8 @@ export.tab_complete = function()
     return vim.fn['compe#complete']()
   end
 end
-export.s_tab_complete = function()
+
+M.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
   -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
@@ -66,4 +68,4 @@ export.s_tab_complete = function()
   end
 end
 
-return export
+return M

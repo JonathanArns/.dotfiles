@@ -1,31 +1,17 @@
-local fn = vim.fn
-
 -- this compiles on saving this file
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 
--- this installs packer, if it is not present
-local execute = vim.api.nvim_command
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  execute 'packadd packer.nvim'
-end
-
-
 -- this declares all of our plugins
 return require('packer').startup(function(use)
-	use '~/workspace/neovimplugin'
-
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
 	use {
-		'sonph/onehalf',
-		rtp = 'vim',
+		'srcery-colors/srcery-vim',
 		config = function()
-			vim.cmd('colorscheme onehalfdark')
+			vim.g.srcery_italic = 1
+			vim.cmd('colorscheme srcery')
 		end
 	}
-	-- use { 'vim-airline/vim-airline' }
 	use {
 		'hoob3rt/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -36,14 +22,25 @@ return require('packer').startup(function(use)
 		end
 	}
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use {
-		'neovim/nvim-lspconfig',
-		config = function()
-			vim.cmd([[autocmd BufwritePre *.go vim.lsp.buf.formatting_sync(nil, 100)]])
-		end
-	}
+	use { 'neovim/nvim-lspconfig' }
 	use { 'kabouzeid/nvim-lspinstall' }
 	use { 'hrsh7th/nvim-compe' }
+	use {
+		'windwp/nvim-autopairs',
+		config = function()
+			require'nvim-autopairs'.setup{
+				check_ts = true
+			}
+			require'nvim-treesitter.configs'.setup{
+				autopairs = { enable = true }
+			}
+			require("nvim-autopairs.completion.compe").setup({
+				map_cr = true, --  map <CR> on insert mode
+				map_complete = true, -- it will auto insert `(` after select function or method item
+				auto_select = false,  -- auto select first item
+			})
+		end
+	}
 	use {
 		'terrortylor/nvim-comment',
 		config = function()

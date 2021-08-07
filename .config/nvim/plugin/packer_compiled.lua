@@ -79,9 +79,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
-  neovimplugin = {
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\2û\1\0\0\3\0\n\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0B\0\2\0016\0\0\0'\1\4\0B\0\2\0029\0\2\0005\1\6\0005\2\5\0=\2\a\1B\0\2\0016\0\0\0'\1\b\0B\0\2\0029\0\2\0005\1\t\0B\0\2\1K\0\1\0\1\0\3\17map_complete\2\vmap_cr\2\16auto_select\1$nvim-autopairs.completion.compe\14autopairs\1\0\0\1\0\1\venable\2\28nvim-treesitter.configs\1\0\1\rcheck_ts\2\nsetup\19nvim-autopairs\frequire\0" },
     loaded = true,
-    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/neovimplugin"
+    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-comment"] = {
     config = { "\27LJ\2\2R\0\0\2\0\4\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0B\0\2\1K\0\1\0\1\0\1\20create_mappings\1\nsetup\17nvim_comment\frequire\0" },
@@ -93,7 +94,6 @@ _G.packer_plugins = {
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
-    config = { "\27LJ\2\2b\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0Cautocmd BufwritePre *.go vim.lsp.buf.formatting_sync(nil, 100)\bcmd\bvim\0" },
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
@@ -109,11 +109,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
-  onehalf = {
-    config = { "\27LJ\2\2;\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\28colorscheme onehalfdark\bcmd\bvim\0" },
-    loaded = true,
-    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/onehalf/vim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/packer.nvim"
@@ -125,6 +120,11 @@ _G.packer_plugins = {
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["srcery-vim"] = {
+    config = { "\27LJ\2\2V\0\0\2\0\5\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0\23colorscheme srcery\bcmd\18srcery_italic\6g\bvim\0" },
+    loaded = true,
+    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/srcery-vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -142,10 +142,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Runtimepath customization
-time([[Runtimepath customization]], true)
-vim.o.runtimepath = vim.o.runtimepath .. ",/home/jonathan/.local/share/nvim/site/pack/packer/start/onehalf/vim"
-time([[Runtimepath customization]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\2\2]\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\foptions\1\0\0\1\0\1\ntheme\fonedark\nsetup\flualine\frequire\0", "config", "lualine.nvim")
@@ -154,14 +150,14 @@ time([[Config for lualine.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\2b\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0Cautocmd BufwritePre *.go vim.lsp.buf.formatting_sync(nil, 100)\bcmd\bvim\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: onehalf
-time([[Config for onehalf]], true)
-try_loadstring("\27LJ\2\2;\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\28colorscheme onehalfdark\bcmd\bvim\0", "config", "onehalf")
-time([[Config for onehalf]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\2û\1\0\0\3\0\n\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0B\0\2\0016\0\0\0'\1\4\0B\0\2\0029\0\2\0005\1\6\0005\2\5\0=\2\a\1B\0\2\0016\0\0\0'\1\b\0B\0\2\0029\0\2\0005\1\t\0B\0\2\1K\0\1\0\1\0\3\17map_complete\2\vmap_cr\2\16auto_select\1$nvim-autopairs.completion.compe\14autopairs\1\0\0\1\0\1\venable\2\28nvim-treesitter.configs\1\0\1\rcheck_ts\2\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: srcery-vim
+time([[Config for srcery-vim]], true)
+try_loadstring("\27LJ\2\2V\0\0\2\0\5\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0\23colorscheme srcery\bcmd\18srcery_italic\6g\bvim\0", "config", "srcery-vim")
+time([[Config for srcery-vim]], false)
 -- Config for: nvim-comment
 time([[Config for nvim-comment]], true)
 try_loadstring("\27LJ\2\2R\0\0\2\0\4\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0B\0\2\1K\0\1\0\1\0\1\20create_mappings\1\nsetup\17nvim_comment\frequire\0", "config", "nvim-comment")

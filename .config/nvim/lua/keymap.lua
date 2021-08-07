@@ -2,6 +2,8 @@ local export = {}
 local vimp = require('vimp')
 vimp.always_override = true
 
+vimp.nnoremap('<leader>e', ':e ~/.config/nvim/init.lua<CR>')
+
 -- general
 vimp.nnoremap('J', 'mzJ`z') -- keep cursor position on J
 vimp.inoremap('.', '.<C-g>u') -- make . an undo point
@@ -44,23 +46,23 @@ vimp.nnoremap('<leader>fh', require'telescope.builtin'.help_tags)
 -- LSP
 export.on_attach_lsp = function(client, bufid)
 	vimp.add_buffer_maps(bufid, function()
-		vimp.nnoremap({'silent'}, 'K', vim.lsp.buf.hover)
-		vimp.nnoremap({'silent'}, '<leader>gd', vim.lsp.buf.definition)
-		vimp.nnoremap({'silent'}, '<leader>gr', vim.lsp.buf.references)
-		vimp.nnoremap({'silent'}, '<leader>gi', vim.lsp.buf.implementation)
-		vimp.nnoremap({'silent'}, '<leader>n', vim.lsp.diagnostic.goto_next)
-		vimp.nnoremap({'silent'}, '<leader>p', vim.lsp.diagnostic.goto_prev)
-		vimp.nnoremap({'silent'}, '<leader>rn', vim.lsp.buf.rename)
-		vimp.nnoremap({'silent'}, '<leader>F', vim.lsp.buf.formatting)
 	end)
 end
+vimp.nnoremap({'silent'}, ',,', vim.lsp.buf.hover)
+vimp.nnoremap({'silent'}, ',gd', vim.lsp.buf.definition)
+vimp.nnoremap({'silent'}, ',gr', vim.lsp.buf.references)
+vimp.nnoremap({'silent'}, ',gi', vim.lsp.buf.implementation)
+vimp.nnoremap({'silent'}, ',n', vim.lsp.diagnostic.goto_next)
+vimp.nnoremap({'silent'}, ',p', vim.lsp.diagnostic.goto_prev)
+vimp.nnoremap({'silent'}, ',r', vim.lsp.buf.rename)
+vimp.nnoremap({'silent'}, ',f', vim.lsp.buf.formatting)
 
 -- completion
 vimp.inoremap({'expr'}, '<Tab>', require'completion'.tab_complete)
 vimp.snoremap({'expr'}, '<Tab>', require'completion'.tab_complete)
 vimp.inoremap({'expr'}, '<S-Tab>', require'completion'.s_tab_complete)
 vimp.snoremap({'expr'}, '<S-Tab>', require'completion'.s_tab_complete)
-vimp.inoremap({'expr'}, '<CR>', 'compe#confirm("<CR>")') -- this line is important for auto-import
+-- vimp.inoremap({'expr'}, '<CR>', 'compe#confirm("<CR>")') -- this is taken care of by nvim-autopairs
 vimp.inoremap({'expr'}, '<C-space>', 'compe#complete()')
 
 return export
