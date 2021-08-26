@@ -6,6 +6,7 @@ local g = vim.g
 g.mapleader = ' '
 
 opt.number = true
+opt.wrap = false
 opt.scrolloff = 5
 opt.termguicolors = true
 

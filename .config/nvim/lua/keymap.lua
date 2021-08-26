@@ -49,12 +49,12 @@ export.on_attach_lsp = function(client, bufid)
 	end)
 end
 vimp.nnoremap({'silent'}, ',,', vim.lsp.buf.hover)
-vimp.nnoremap({'silent'}, ',gd', vim.lsp.buf.definition)
-vimp.nnoremap({'silent'}, ',gr', vim.lsp.buf.references)
-vimp.nnoremap({'silent'}, ',gi', vim.lsp.buf.implementation)
+vimp.nnoremap({'silent'}, ',d', vim.lsp.buf.definition)
+vimp.nnoremap({'silent'}, ',r', vim.lsp.buf.references)
+vimp.nnoremap({'silent'}, ',i', vim.lsp.buf.implementation)
 vimp.nnoremap({'silent'}, ',n', vim.lsp.diagnostic.goto_next)
 vimp.nnoremap({'silent'}, ',p', vim.lsp.diagnostic.goto_prev)
-vimp.nnoremap({'silent'}, ',r', vim.lsp.buf.rename)
+vimp.nnoremap({'silent'}, ',c', vim.lsp.buf.rename)
 vimp.nnoremap({'silent'}, ',f', vim.lsp.buf.formatting)
 
 -- completion

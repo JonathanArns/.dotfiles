@@ -7,7 +7,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.api.nvim_command 'packadd packer.nvim'
 end
 
-
 require'options'
 require'plugins'
 require'keymap'

@@ -13,18 +13,110 @@ return require('packer').startup(function(use)
 		end
 	}
 	use {
-		'hoob3rt/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		'datwaft/bubbly.nvim',
+		requires = { 'nvim-lua/lsp-status.nvim' },
 		config = function()
-			require'lualine'.setup{
-				options = { theme = 'onedark' }
+			-- Here you can add the configuration for the plugin
+			vim.g.bubbly_palette = {
+				background = "#34343c",
+				foreground = "#c5cdd9",
+				black = "#3e4249",
+				red = "#ec7279",
+				green = "#a0c980",
+				yellow = "#deb974",
+				blue = "#6cb6eb",
+				purple = "#d38aea",
+				cyan = "#5dbbc1",
+				white = "#c5cdd9",
+				lightgrey = "#57595e",
+				darkgrey = "#404247",
+			}
+			vim.g.bubbly_statusline = {
+				'mode',
+				'path',
+				'truncate',
+				'branch',
+				'builtinlsp.diagnostic_count',
+				'lsp_status.messages',
+				'divisor',
+				'filetype',
+				'progress',
 			}
 		end
 	}
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {
+		'aserowy/tmux.nvim',
+		config = function()
+			require'tmux'.setup{
+				copy_sync = {
+					-- enable = true,
+				},
+				navigation = {
+					cycle_navigation = false,
+					enable_default_keybindings = true, -- C-hjkl
+				},
+				resize = {
+					enable_default_keybindings = true, -- A-hjkl
+				}
+			}
+		end
+	}
+	use {
+		'karb94/neoscroll.nvim',
+		config = function()
+			require'neoscroll'.setup{}
+		end
+	}
+	-- use {
+	-- 	'NTBBloodbath/rest.nvim',
+	-- 	requires = { 'nvim-lua/plenary.nvim' }
+	-- }
+	-- use { 'nicwest/vim-http' }
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = function()
+			require'nvim-treesitter.configs'.setup{
+				ensure_installed = {'go', 'python', 'rust', 'lua', 'html', 'javascript', 'css'},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = {enable = true},
+			}
+		end
+	}
+	use {
+		'RRethy/nvim-treesitter-textsubjects',
+		config = function()
+			require'nvim-treesitter.configs'.setup {
+				textsubjects = {
+					enable = true,
+					keymaps = {
+						['.'] = 'textsubjects-smart',
+						[';'] = 'textsubjects-container-outer',
+					}
+				},
+			}
+		end
+	}
 	use { 'neovim/nvim-lspconfig' }
 	use { 'kabouzeid/nvim-lspinstall' }
 	use { 'hrsh7th/nvim-compe' }
+	use {
+		'ray-x/lsp_signature.nvim',
+		config = function()
+			require'lsp_signature'.setup{
+				hint_enable = false,
+			}
+		end
+	}
+	use {
+		'kosayoda/nvim-lightbulb',
+		config = function()
+			vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+		end
+	}
 	use {
 		'windwp/nvim-autopairs',
 		config = function()
@@ -65,6 +157,13 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-lua/plenary.nvim' },
 		config = function()
 			require'gitsigns'.setup()
+		end
+	}
+	use {
+		'mattn/emmet-vim',
+		config = function()
+			vim.g.user_emmet_mode = 'inv'
+			vim.g.user_emmet_leader_key = '<C-,>'
 		end
 	}
 end)
