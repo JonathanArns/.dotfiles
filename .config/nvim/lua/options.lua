@@ -10,6 +10,8 @@ opt.wrap = false
 opt.scrolloff = 5
 opt.termguicolors = true
 
+opt.autoread = true
+
 -- tabs
 opt.tabstop = 4
 opt.shiftwidth = 4

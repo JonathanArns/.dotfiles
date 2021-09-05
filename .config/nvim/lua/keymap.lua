@@ -21,7 +21,6 @@ vimp.nnoremap('<C-k>', '<C-w>k')
 vimp.nnoremap('<C-l>', '<C-w>l')
 
 -- buffers
-vimp.nnoremap('<leader>b', [[:buffers<CR>:buffer<Space>]]) -- show buffers and select one
 vimp.vnoremap('P', 'p')
 vimp.vnoremap('p', '"_dP') -- don't yank replaced text after paste in visual mode
 
@@ -38,10 +37,11 @@ vimp.nnoremap('<leader>lp', ':lprev<CR>zzzv')
 vimp.nnoremap('<leader>lo', ':lopen<CR>')
 
 -- fuzzy finder (telescope)
-vimp.nnoremap('<leader>ff', require'telescope.builtin'.find_files)
-vimp.nnoremap('<leader>fb', require'telescope.builtin'.buffers)
-vimp.nnoremap('<leader>fg', require'telescope.builtin'.live_grep)
-vimp.nnoremap('<leader>fh', require'telescope.builtin'.help_tags)
+vimp.nnoremap('<leader>f', require'telescope.builtin'.find_files)
+vimp.nnoremap('<leader>b', require'telescope.builtin'.buffers)
+vimp.nnoremap('<leader>g', require'telescope.builtin'.live_grep)
+vimp.nnoremap('<leader>h', require'telescope.builtin'.help_tags)
+vimp.nnoremap('<leader>t', require'telescope.builtin'.file_browser)
 
 -- LSP
 export.on_attach_lsp = function(client, bufid)

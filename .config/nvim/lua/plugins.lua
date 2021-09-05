@@ -1,8 +1,13 @@
--- this compiles on saving this file
-vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
 -- this declares all of our plugins
 return require('packer').startup(function(use)
+	use '~/workspace/neovimplugin'
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
 	use {
@@ -77,15 +82,17 @@ return require('packer').startup(function(use)
 		run = ':TSUpdate',
 		config = function()
 			require'nvim-treesitter.configs'.setup{
-				ensure_installed = {'go', 'python', 'rust', 'lua', 'html', 'javascript', 'css'},
+				ensure_installed = "all",
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
 				},
 				indent = {enable = true},
+				context_commentstring = {enable = true},
 			}
 		end
 	}
+	use 'JoosepAlviste/nvim-ts-context-commentstring'
 	use {
 		'RRethy/nvim-treesitter-textsubjects',
 		config = function()
