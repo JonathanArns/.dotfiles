@@ -11,6 +11,7 @@ opt.scrolloff = 5
 opt.termguicolors = true
 
 opt.autoread = true
+opt.directory = "./"
 
 -- tabs
 opt.tabstop = 4
