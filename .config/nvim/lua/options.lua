@@ -9,13 +9,13 @@ opt.number = true
 opt.wrap = false
 opt.scrolloff = 5
 opt.termguicolors = true
-
-opt.autoread = true
-opt.directory = "./"
+opt.title = true
+opt.mouse = 'a'
 
 -- tabs
 opt.tabstop = 4
 opt.shiftwidth = 4
+opt.shiftround = true
 opt.smarttab = true
 opt.autoindent = true
 opt.copyindent = true
@@ -27,10 +27,10 @@ opt.smartcase = true
 opt.wrapscan = true
 opt.incsearch = true
 
-
 -- buffers
 opt.hidden = true
--- opt.autowriteall = true
+opt.autowriteall = true
+opt.autoread = true
 
 
 -- disable builtin vim plugins

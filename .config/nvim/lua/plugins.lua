@@ -10,6 +10,8 @@ return require('packer').startup(function(use)
 	use '~/workspace/neovimplugin'
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
+	use 'mbbill/undotree'
+	use 'tpope/vim-eunuch'
 	use {
 		'srcery-colors/srcery-vim',
 		config = function()

@@ -169,6 +169,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/tmux.nvim"
   },
+  undotree = {
+    loaded = true,
+    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/undotree"
+  },
+  ["vim-eunuch"] = {
+    loaded = true,
+    path = "/home/jonathan/.local/share/nvim/site/pack/packer/start/vim-eunuch"
+  },
   ["vim-rooter"] = {
     config = { "\27LJ\2\2\1\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\6\0\0\vgo.mod\t.git\rMakefile\15>workspace\r>.config\20rooter_patterns\b/,*\19rooter_targets\6g\bvim\0" },
     loaded = true,

@@ -1,14 +1,25 @@
-local export = {}
+local M = {}
 local vimp = require('vimp')
 vimp.always_override = true
 
 vimp.nnoremap('<leader>e', ':e ~/.config/nvim/init.lua<CR>')
 
--- general
-vimp.nnoremap('J', 'mzJ`z') -- keep cursor position on J
-vimp.inoremap('.', '.<C-g>u') -- make . an undo point
+-- clear search
+vimp.nnoremap({'silent'}, ',/', ':nohlsearch<CR>')
+
+-- swap : and ;
+vimp.nnoremap(';', ':')
+vimp.nnoremap(':', ';')
+
+-- keep cursor position on J
+vimp.nnoremap('J', 'mzJ`z')
+
+-- make . and , undo points
+vimp.inoremap('.', '.<C-g>u')
 vimp.inoremap(',', ',<C-g>u')
-vimp.vnoremap('J', [[:m '>+1<CR>gv=gv]]) -- move around lines in visual mode
+
+-- move around lines in visual mode
+vimp.vnoremap('J', [[:m '>+1<CR>gv=gv]])
 vimp.vnoremap('K', [[:m '<-2<CR>gv=gv]])
 
 -- windows
@@ -28,6 +39,9 @@ vimp.vnoremap('p', '"_dP') -- don't yank replaced text after paste in visual mod
 vimp.nnoremap('<C-_>', ":CommentToggle<CR>")
 vimp.vnoremap('<C-_>', ":CommentToggle<CR>")
 
+-- undotree
+vimp.nnoremap('<leader>u', ':UndotreeToggle<CR>')
+
 -- quickfix list & location list
 vimp.nnoremap('<leader>cn', ':cnext<CR>zzzv')
 vimp.nnoremap('<leader>cp', ':cprev<CR>zzzv')
@@ -44,7 +58,7 @@ vimp.nnoremap('<leader>h', require'telescope.builtin'.help_tags)
 vimp.nnoremap('<leader>t', require'telescope.builtin'.file_browser)
 
 -- LSP
-export.on_attach_lsp = function(client, bufid)
+M.on_attach_lsp = function(client, bufid)
 	vimp.add_buffer_maps(bufid, function()
 	end)
 end
@@ -65,4 +79,4 @@ vimp.snoremap({'expr'}, '<S-Tab>', require'completion'.s_tab_complete)
 -- vimp.inoremap({'expr'}, '<CR>', 'compe#confirm("<CR>")') -- this is taken care of by nvim-autopairs
 vimp.inoremap({'expr'}, '<C-space>', 'compe#complete()')
 
-return export
+return M
