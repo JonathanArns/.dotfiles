@@ -33,7 +33,6 @@ vim.cmd([[
 
 -- this declares all of our plugins
 return require('packer').startup(function(use)
-	use '~/workspace/neovimplugin'
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
 	use 'mbbill/undotree'
@@ -120,7 +119,7 @@ return require('packer').startup(function(use)
 		},
 		config = function()
 			require'nvim-treesitter.configs'.setup{
-				ensure_installed = "all",
+				ensure_installed = {"go","html","vue","python","rust","lua","css","javascript"},
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
