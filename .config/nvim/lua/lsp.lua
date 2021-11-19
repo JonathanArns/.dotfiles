@@ -1,26 +1,33 @@
-local function setup_servers()
-	require'lspinstall'.setup()
-	local servers = require'lspinstall'.installed_servers()
-	for _, server in pairs(servers) do
-		require'lspconfig'[server].setup{
-			on_attach = require'keymap'.on_attach_lsp,
+local special_configs = {
+	sumneko_lua = {
+		settings = {
+			Lua = {
+				runtime = {
+					version = 'LuaJIT',
+				},
+				diagnostics = {
+					globals = {'vim'}
+				},
+				workspace = {
+					library = vim.api.nvim_get_runtime_file("", true),
+				}
+			}
 		}
+	},
+}
+
+vim.cmd[[autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false, workspace=true})]]
+
+require'nvim-lsp-installer'.on_server_ready(function(server)
+	local config = {}
+	if special_configs[server.name] ~= nil then
+		for k,v in pairs(special_configs[server.name]) do config[k] = v end
 	end
-end
-
-setup_servers()
-
--- automatically setup servers again after `:LspInstall <server>`
-require'lspinstall'.post_install_hook = function ()
-	setup_servers() -- makes sure the new server is setup in lspconfig
-	vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
--- auto put diagnostics into location list
-vim.cmd([[autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false})]])
+	server:setup(config)
+end)
 
 -- format and organize imports on save for *.go files
-function formatAndOrgImports(wait_ms)
+function FormatAndOrgImports(wait_ms)
 	vim.lsp.buf.formatting_sync(nil, wait_ms)
 	local params = vim.lsp.util.make_range_params()
 	params.context = {only = {"source.organizeImports"}}
@@ -35,4 +42,4 @@ function formatAndOrgImports(wait_ms)
 		end
 	end
 end
-vim.cmd([[autocmd BufwritePre *.go lua formatAndOrgImports(nil, 200)]])
+vim.cmd([[autocmd BufwritePre *.go lua FormatAndOrgImports(nil, 200)]])
