@@ -119,7 +119,7 @@ return require('packer').startup(function(use)
 		},
 		config = function()
 			require'nvim-treesitter.configs'.setup{
-				ensure_installed = {"go","html","vue","python","rust","lua","css","javascript"},
+				ensure_installed = {"go","html","vue","python","rust","lua","css","javascript","fish"},
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,

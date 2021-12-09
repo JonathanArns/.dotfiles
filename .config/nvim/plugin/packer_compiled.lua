@@ -119,7 +119,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\2›\3\0\0\4\0\18\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\0015\2\f\0=\2\r\0015\2\14\0005\3\15\0=\3\16\2=\2\17\1B\0\2\1K\0\1\0\17textsubjects\fkeymaps\1\0\2\6.\23textsubjects-smart\6;!textsubjects-container-outer\1\0\1\venable\2\14autopairs\1\0\1\venable\2\26context_commentstring\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\0\1\t\0\0\ago\thtml\bvue\vpython\trust\blua\bcss\15javascript\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\2 \3\0\0\4\0\18\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\0015\2\f\0=\2\r\0015\2\14\0005\3\15\0=\3\16\2=\2\17\1B\0\2\1K\0\1\0\17textsubjects\fkeymaps\1\0\2\6.\23textsubjects-smart\6;!textsubjects-container-outer\1\0\1\venable\2\14autopairs\1\0\1\venable\2\26context_commentstring\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\0\1\n\0\0\ago\thtml\bvue\vpython\trust\blua\bcss\15javascript\tfish\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/var/home/jonathan/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -226,7 +226,7 @@ try_loadstring("\27LJ\2\2V\0\0\2\0\5\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\00
 time([[Config for srcery-vim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\2›\3\0\0\4\0\18\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\0015\2\f\0=\2\r\0015\2\14\0005\3\15\0=\3\16\2=\2\17\1B\0\2\1K\0\1\0\17textsubjects\fkeymaps\1\0\2\6.\23textsubjects-smart\6;!textsubjects-container-outer\1\0\1\venable\2\14autopairs\1\0\1\venable\2\26context_commentstring\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\0\1\t\0\0\ago\thtml\bvue\vpython\trust\blua\bcss\15javascript\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\2 \3\0\0\4\0\18\0\0216\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\0015\2\f\0=\2\r\0015\2\14\0005\3\15\0=\3\16\2=\2\17\1B\0\2\1K\0\1\0\17textsubjects\fkeymaps\1\0\2\6.\23textsubjects-smart\6;!textsubjects-container-outer\1\0\1\venable\2\14autopairs\1\0\1\venable\2\26context_commentstring\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\0\1\n\0\0\ago\thtml\bvue\vpython\trust\blua\bcss\15javascript\tfish\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
 -- Config for: vim-rooter
 time([[Config for vim-rooter]], true)

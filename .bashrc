@@ -8,3 +8,4 @@ PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.cargo/bin
 
 set -o vi
+. "$HOME/.cargo/env"
