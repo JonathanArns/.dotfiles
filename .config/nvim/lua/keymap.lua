@@ -12,10 +12,10 @@ vimp.nnoremap(';', ':')
 vimp.nnoremap(':', ';')
 
 -- make H and L jump to start and end of line
-vimp.nnoremap('H', '0')
-vimp.vnoremap('H', '0')
-vimp.nnoremap('L', '$')
-vimp.vnoremap('L', '$')
+vimp.nmap('H', '^')
+vimp.vmap('H', '^')
+vimp.nmap('L', '$')
+vimp.vmap('L', '$')
 
 -- keep cursor position on J
 vimp.nnoremap('J', 'mzJ`z')
@@ -41,9 +41,8 @@ vimp.nnoremap('<C-l>', '<C-w>l')
 vimp.vnoremap('P', 'p')
 vimp.vnoremap('p', '"_dP') -- don't yank replaced text after paste in visual mode
 
--- comments
-vimp.nnoremap('<C-_>', ":CommentToggle<CR>")
-vimp.vnoremap('<C-_>', ":CommentToggle<CR>")
+-- file tree
+vimp.nnoremap('<leader>t', ':NvimTreeToggle<CR>')
 
 -- undotree
 vimp.nnoremap('<leader>u', ':UndotreeToggle<CR>')
@@ -57,7 +56,7 @@ vimp.nnoremap('<leader>lp', ':lprev<CR>zzzv')
 vimp.nnoremap('<leader>ll', ':lwindow<CR>')
 
 -- fuzzy finder (telescope)
-vimp.nnoremap('<leader><leader>', require'telescope.builtin'.git_files)
+vimp.nnoremap('<leader><leader>', require'telescope.builtin'.find_files)
 vimp.nnoremap('<leader>b', require'telescope.builtin'.buffers)
 vimp.nnoremap('<leader>f', require'telescope.builtin'.live_grep)
 
@@ -70,9 +69,9 @@ vimp.nnoremap({'silent'}, ',d', vim.lsp.buf.definition)
 vimp.nnoremap({'silent'}, ',t', vim.lsp.buf.type_definition)
 vimp.nnoremap({'silent'}, ',i', vim.lsp.buf.implementation)
 vimp.nnoremap({'silent'}, ',r', vim.lsp.buf.references)
-vimp.nnoremap({'silent'}, ',n', vim.lsp.diagnostic.goto_next)
-vimp.nnoremap({'silent'}, ',p', vim.lsp.diagnostic.goto_prev)
-vimp.nnoremap({'silent'}, ',D', vim.lsp.diagnostic.show_line_diagnostics)
+vimp.nnoremap({'silent'}, ',n', vim.diagnostic.goto_next)
+vimp.nnoremap({'silent'}, ',p', vim.diagnostic.goto_prev)
+vimp.nnoremap({'silent'}, ',D', vim.diagnostic.show_line_diagnostics)
 vimp.nnoremap({'silent'}, ',R', vim.lsp.buf.rename)
 vimp.nnoremap({'silent'}, ',f', vim.lsp.buf.formatting)
 vimp.nnoremap({'silent'}, ',a', require'telescope.builtin'.lsp_code_actions)

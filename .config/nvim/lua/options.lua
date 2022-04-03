@@ -13,6 +13,7 @@ opt.termguicolors = true
 opt.title = true
 opt.mouse = 'a'
 opt.textwidth = 130
+-- opt.shell = 'fish'
 
 -- tabs
 opt.tabstop = 4
@@ -35,3 +36,6 @@ opt.autowrite = true
 opt.autowriteall = true
 opt.autoread = true
 opt.undofile = true
+
+-- turn off highlightin in json files
+vim.cmd[[autocmd Filetype json setlocal syntax=OFF]]

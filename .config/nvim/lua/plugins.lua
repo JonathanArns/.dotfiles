@@ -36,123 +36,90 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim' -- packer manages itself
 	use 'svermeulen/vimpeccable' -- used for key mappings
 	use 'mbbill/undotree'
-	use 'ggandor/lightspeed.nvim'
 	use 'tpope/vim-eunuch'
 	use 'tpope/vim-fugitive'
-	use {
-		'lewis6991/gitsigns.nvim',
-		requires = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			require'gitsigns'.setup()
-		end
-	}
-	use {
-	    'echasnovski/mini.nvim', -- a ton of cool shit, all in one
-        config = function()
-            require'mini.pairs'.setup{}
-            require'mini.completion'.setup{}
-        end
-    }
+    use 'tpope/vim-surround'
+    use 'tpope/vim-repeat'
+    use 'kyazdani42/nvim-web-devicons'
+	use 'neovim/nvim-lspconfig'
+	use 'williamboman/nvim-lsp-installer'
+	use 'Darazaki/indent-o-matic'
+    use 'rktjmp/lush.nvim'
 	use {
 		'srcery-colors/srcery-vim',
 		config = function()
 			vim.g.srcery_italic = 1
-			vim.cmd('colorscheme srcery')
+            vim.g.srcery_italic_types = 1
+            vim.cmd[[colorscheme srcery]]
 		end
 	}
 	use {
-		'datwaft/bubbly.nvim',
-		requires = { 'nvim-lua/lsp-status.nvim' },
-		config = function()
-			-- Here you can add the configuration for the plugin
-			vim.g.bubbly_palette = {
-				background = "#34343c",
-				foreground = "#c5cdd9",
-				black = "#3e4249",
-				red = "#ec7279",
-				green = "#a0c980",
-				yellow = "#deb974",
-				blue = "#6cb6eb",
-				purple = "#d38aea",
-				cyan = "#5dbbc1",
-				white = "#c5cdd9",
-				lightgrey = "#57595e",
-				darkgrey = "#404247",
-			}
-			vim.g.bubbly_statusline = {
-				'mode',
-				'path',
-				'truncate',
-				'branch',
-				'builtinlsp.diagnostic_count',
-				'lsp_status.messages',
-				'divisor',
-				-- 'snippy',
-				'filetype',
-				'progress',
-			}
-		end
+        'windwp/windline.nvim',
+        config = function() require'wlsample.airline' end
 	}
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = { 'nvim-lua/plenary.nvim' },
+		config = function() require'plugins.gitsigns' end
+	}
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lua', 'dcampos/nvim-snippy', 'dcampos/cmp-snippy' },
+        config = function() require'plugins.cmp' end
+    }
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function() require'plugins.null_ls' end
+    }
+    use {
+        'ray-x/lsp_signature.nvim',
+        config = function() require'plugins.lsp_signature' end
+    }
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = { 'mfussenegger/nvim-dap', 'Pocco81/DAPInstall.nvim' },
+        config = function() require'plugins.dap' end
+    }
+	use {
+        'nvim-telescope/telescope.nvim',
+        run = 'make',
+		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-media-files.nvim' },
+		config = function() require 'plugins.telescope' end
+	}
+    use {
+        'akinsho/toggleterm.nvim',
+        config = function() require'plugins.toggleterm' end
+    }
 	use {
 		'aserowy/tmux.nvim',
-		config = function()
-			require'tmux'.setup{
-				copy_sync = {
-					-- enable = true,
-				},
-				navigation = {
-					cycle_navigation = false,
-					enable_default_keybindings = true, -- C-hjkl
-				},
-				resize = {
-					enable_default_keybindings = true, -- A-hjkl
-				}
-			}
-		end
+		config = function() require'plugins.tmux' end
 	}
 	use {
     	'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
-		requires = {
-		    'JoosepAlviste/nvim-ts-context-commentstring',
-		    'RRethy/nvim-treesitter-textsubjects',
-		},
-		config = function()
-			require'nvim-treesitter.configs'.setup{
-				ensure_installed = {"go","html","vue","python","rust","lua","css","javascript","fish"},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {enable = true},
-				context_commentstring = {enable = true},
-				autopairs = { enable = true },
-				textsubjects = {
-					enable = true,
-					keymaps = {
-						['.'] = 'textsubjects-smart',
-						[';'] = 'textsubjects-container-outer',
-					}
-				},
-			}
-		end
+		config = function() require'plugins.treesitter' end
 	}
-	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
-	-- use {
-	-- 	'dcampos/nvim-snippy',
-	-- 	config = function() require'snippy'.setup{ hl_group = 'search' } end,
-	-- 	requires = { 'honza/vim-snippets' }
-	-- }
-	use 'Darazaki/indent-o-matic'
-	use {
-		'terrortylor/nvim-comment',
-		config = function()
-			require'nvim_comment'.setup{
-				create_mappings = false
-			}
-		end
-	}
+    use {
+        'windwp/nvim-autopairs',
+        after = 'nvim-treesitter',
+        config = function() require'plugins.autopairs' end
+    }
+    use {
+        'numToStr/Comment.nvim',
+        config = function() require'plugins.comment' end
+    }
+    use {
+        'jghauser/mkdir.nvim',
+        config = function() require'mkdir' end
+    }
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() require'plugins.indent_blankline' end
+    }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        config = function() require'plugins.nvim_tree' end
+    }
 	use {
 		'airblade/vim-rooter',
 		config = function()
@@ -160,11 +127,8 @@ return require('packer').startup(function(use)
 			vim.g.rooter_patterns = { 'go.mod', '.git', 'Makefile', '>workspace', '>.config' }
 		end
 	}
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-		config = function()
-		    
-		end
-	}
+    -- bootstrap a new install
+    if PACKER_BOOTSTRAP then
+        require'packer'.sync()
+    end
 end)
