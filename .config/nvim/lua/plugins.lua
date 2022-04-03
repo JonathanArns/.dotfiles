@@ -86,14 +86,6 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-media-files.nvim' },
 		config = function() require 'plugins.telescope' end
 	}
-    use {
-        'akinsho/toggleterm.nvim',
-        config = function() require'plugins.toggleterm' end
-    }
-	use {
-		'aserowy/tmux.nvim',
-		config = function() require'plugins.tmux' end
-	}
 	use {
     	'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',

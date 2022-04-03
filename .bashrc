@@ -1,7 +1,7 @@
 export EDITOR='nvim'
 
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
-alias icat="kitty +kitten icat --align=left"
+alias icat='kitty +kitten icat --align=left'
 alias vim='nvim'
 alias la='ls -la'
 alias ll='ls -l'
@@ -10,6 +10,7 @@ alias llt='ls -lt'
 
 PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.cargo/bin
+PATH=$PATH:~/go/bin
 
 set -o vi
 
