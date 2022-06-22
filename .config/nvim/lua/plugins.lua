@@ -45,6 +45,10 @@ return require('packer').startup(function(use)
 	use 'williamboman/nvim-lsp-installer'
 	use 'Darazaki/indent-o-matic'
     use 'rktjmp/lush.nvim'
+    -- use {
+    --     'simrat39/rust-tools.nvim',
+    --     config = function() require'plugins.rust_tools' end
+    -- }
 	use {
 		'srcery-colors/srcery-vim',
 		config = function()
@@ -74,11 +78,6 @@ return require('packer').startup(function(use)
     use {
         'ray-x/lsp_signature.nvim',
         config = function() require'plugins.lsp_signature' end
-    }
-    use {
-        'rcarriga/nvim-dap-ui',
-        requires = { 'mfussenegger/nvim-dap', 'Pocco81/DAPInstall.nvim' },
-        config = function() require'plugins.dap' end
     }
 	use {
         'nvim-telescope/telescope.nvim',

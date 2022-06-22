@@ -74,12 +74,13 @@ vimp.nnoremap({'silent'}, ',d', vim.lsp.buf.definition)
 vimp.nnoremap({'silent'}, ',t', vim.lsp.buf.type_definition)
 vimp.nnoremap({'silent'}, ',i', vim.lsp.buf.implementation)
 vimp.nnoremap({'silent'}, ',r', vim.lsp.buf.references)
-vimp.nnoremap({'silent'}, ',n', vim.diagnostic.goto_next)
-vimp.nnoremap({'silent'}, ',p', vim.diagnostic.goto_prev)
-vimp.nnoremap({'silent'}, ',D', vim.diagnostic.show_line_diagnostics)
 vimp.nnoremap({'silent'}, ',R', vim.lsp.buf.rename)
 vimp.nnoremap({'silent'}, ',f', vim.lsp.buf.formatting)
 vimp.nnoremap({'silent'}, ',a', require'telescope.builtin'.lsp_code_actions)
+-- diagnostics
+vimp.nnoremap({'silent'}, ',n', vim.diagnostic.goto_next)
+vimp.nnoremap({'silent'}, ',p', vim.diagnostic.goto_prev)
+vimp.nnoremap({'silent'}, ',D', vim.diagnostic.open_float)
 
 -- completion
 vimp.inoremap({'expr'}, '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]])
