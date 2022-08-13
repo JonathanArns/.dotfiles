@@ -2,6 +2,7 @@ export EDITOR='nvim'
 
 alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias icat='kitty +kitten icat --align=left'
+alias ssh='kitty +kitten ssh'
 alias vim='nvim'
 alias la='ls -la'
 alias ll='ls -l'

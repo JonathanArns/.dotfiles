@@ -107,10 +107,6 @@ return require('packer').startup(function(use)
         'lukas-reineke/indent-blankline.nvim',
         config = function() require'plugins.indent_blankline' end
     }
-    use {
-        'kyazdani42/nvim-tree.lua',
-        config = function() require'plugins.nvim_tree' end
-    }
 	use {
 		'airblade/vim-rooter',
 		config = function()
