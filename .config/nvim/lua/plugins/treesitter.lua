@@ -4,7 +4,7 @@ if not present then
 end
 
 nvim_treesitter.setup {
-    ensure_installed = {'go','html','vue','python','rust','lua','css','javascript','bash'},
+    ensure_installed = {'go','html','vue','python','rust','lua','css','javascript','bash', 'erlang'},
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = true,

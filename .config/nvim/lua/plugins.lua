@@ -111,7 +111,8 @@ return require('packer').startup(function(use)
 		'airblade/vim-rooter',
 		config = function()
 			vim.g.rooter_targets = '/,*'
-			vim.g.rooter_patterns = { 'go.mod', '.git', 'Makefile', '>workspace', '>.config' }
+			vim.g.rooter_patterns = { 'Cargo.toml', 'go.mod', '.git', 'Makefile', '>workspace', '>.config' }
+            vim.g.rooter_buftypes = { '' }
 		end
 	}
     -- bootstrap a new install

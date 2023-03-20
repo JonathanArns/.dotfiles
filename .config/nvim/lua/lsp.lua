@@ -1,5 +1,5 @@
 local special_configs = {
-	sumneko_lua = {
+	lua_ls = {
 		settings = {
 			Lua = {
 				runtime = {
@@ -14,13 +14,22 @@ local special_configs = {
 			}
 		}
 	},
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					disabled = {"unresolved-proc-macro"},
+				}
+			}
+		}
+	}
 }
 
 vim.cmd[[autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false, workspace=true})]]
 
 require'nvim-lsp-installer'.on_server_ready(function(server)
 	local config = {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+		capabilities = require("cmp_nvim_lsp").default_capabilities()
 	}
 	if special_configs[server.name] ~= nil then
 		for k,v in pairs(special_configs[server.name]) do config[k] = v end
