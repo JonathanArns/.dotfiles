@@ -42,7 +42,8 @@ return require('packer').startup(function(use)
     use 'tpope/vim-repeat'
     use 'kyazdani42/nvim-web-devicons'
 	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
+	use 'williamboman/mason.nvim'
+	use 'williamboman/mason-lspconfig.nvim'
 	use 'Darazaki/indent-o-matic'
     use 'rktjmp/lush.nvim'
     -- use {

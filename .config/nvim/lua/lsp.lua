@@ -1,38 +1,16 @@
-local special_configs = {
-	lua_ls = {
-		settings = {
-			Lua = {
-				runtime = {
-					version = 'LuaJIT',
-				},
-				diagnostics = {
-					globals = {'vim'}
-				},
-				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true),
-				}
-			}
-		}
-	},
-	rust_analyzer = {
-		settings = {
-			["rust-analyzer"] = {
-				diagnostics = {
-					disabled = {"unresolved-proc-macro"},
-				}
-			}
-		}
-	}
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+require("mason-lspconfig").setup_handlers {
+	-- The first entry (without a key) will be the default handler
+	-- and will be called for each installed server that doesn't have
+	-- a dedicated handler.
+	function (server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup {}
+	end,
+	-- Next, you can provide a dedicated handler for specific servers.
+	-- For example, a handler override for the `rust_analyzer`:
+	-- ["rust_analyzer"] = function ()
+	-- 	require("rust-tools").setup {}
+	-- end
 }
-
-vim.cmd[[autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false, workspace=true})]]
-
-require'nvim-lsp-installer'.on_server_ready(function(server)
-	local config = {
-		capabilities = require("cmp_nvim_lsp").default_capabilities()
-	}
-	if special_configs[server.name] ~= nil then
-		for k,v in pairs(special_configs[server.name]) do config[k] = v end
-	end
-	server:setup(config)
-end)
