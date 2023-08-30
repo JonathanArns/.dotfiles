@@ -20,10 +20,6 @@ vimp.vmap('L', '$')
 -- keep cursor position on J
 vimp.nnoremap('J', 'mzJ`z')
 
--- make . and , undo points
-vimp.inoremap('.', '.<C-g>u')
-vimp.inoremap(',', ',<C-g>u')
-
 -- move around lines in visual mode
 vimp.vnoremap('J', [[:m '>+1<CR>gv=gv]])
 vimp.vnoremap('K', [[:m '<-2<CR>gv=gv]])
@@ -32,14 +28,14 @@ vimp.vnoremap('K', [[:m '<-2<CR>gv=gv]])
 vimp.nnoremap('<leader>w', ':close<CR>')
 vimp.nnoremap('<leader>/', ':vsplit<CR><C-w>l')
 vimp.nnoremap('<leader>-', ':split<CR><C-w>j')
-vimp.nnoremap('<C-h>', function() require'kitty'.navigate('h') end)
-vimp.nnoremap('<C-j>', function() require'kitty'.navigate('j') end)
-vimp.nnoremap('<C-k>', function() require'kitty'.navigate('k') end)
-vimp.nnoremap('<C-l>', function() require'kitty'.navigate('l') end)
-vimp.nnoremap('<A-h>', '<C-w><')
-vimp.nnoremap('<A-j>', '<C-w>-')
-vimp.nnoremap('<A-k>', '<C-w>+')
-vimp.nnoremap('<A-l>', '<C-w>>')
+-- vimp.nnoremap('<C-h>', function() require'kitty'.navigate('h') end)
+-- vimp.nnoremap('<C-j>', function() require'kitty'.navigate('j') end)
+-- vimp.nnoremap('<C-k>', function() require'kitty'.navigate('k') end)
+-- vimp.nnoremap('<C-l>', function() require'kitty'.navigate('l') end)
+-- vimp.nnoremap('<A-h>', '<C-w><')
+-- vimp.nnoremap('<A-j>', '<C-w>-')
+-- vimp.nnoremap('<A-k>', '<C-w>+')
+-- vimp.nnoremap('<A-l>', '<C-w>>')
 
 
 -- buffers
