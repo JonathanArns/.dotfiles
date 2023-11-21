@@ -4,10 +4,10 @@ if not present then
 end
 
 nvim_treesitter.setup {
-    ensure_installed = {'go','html','vue','python','rust','lua','css','javascript','bash','erlang'},
+    ensure_installed = {'go','html','vue','python','rust','lua','css','javascript','bash','erlang','markdown'},
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
     },
     matchup = {
         enable = true,

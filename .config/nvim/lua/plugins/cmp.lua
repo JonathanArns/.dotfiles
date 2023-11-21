@@ -8,14 +8,9 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local lspkind = require("lspkind")
-
 local snippy = require("snippy")
 
 cmp.setup {
-  formatting = {
-    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
-  },
   mapping = {
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -48,6 +43,14 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "snippy" },
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,
+      cmp.config.compare.offset,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+    }
   },
   snippet = {
     expand = function(args)

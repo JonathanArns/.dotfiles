@@ -7,10 +7,6 @@ vimp.nnoremap('<leader>e', ':e ~/.config/nvim/init.lua<CR>')
 -- clear search
 vimp.nnoremap({'silent'}, ',/', ':nohlsearch<CR>')
 
--- swap : and ;
--- vimp.nnoremap(';', ':')
--- vimp.nnoremap(':', ';')
-
 -- make H and L jump to start and end of line
 -- vimp.nmap('H', '^')
 -- vimp.vmap('H', '^')
@@ -42,9 +38,6 @@ vimp.nnoremap('<A-l>', function() require'kitty'.window_command('>') end)
 vimp.vnoremap('P', 'p')
 vimp.vnoremap('p', '"_dP') -- don't yank replaced text after paste in visual mode
 
--- file tree
-vimp.nnoremap('<leader>t', ':NvimTreeToggle<CR>')
-
 -- undotree
 vimp.nnoremap('<leader>u', ':UndotreeToggle<CR>')
 
@@ -52,17 +45,19 @@ vimp.nnoremap('<leader>u', ':UndotreeToggle<CR>')
 vimp.nnoremap('<leader>cn', ':cnext<CR>zzzv')
 vimp.nnoremap('<leader>cp', ':cprev<CR>zzzv')
 vimp.nnoremap('<leader>cc', ':cwindow<CR>')
-vimp.nnoremap('<leader>ln', ':lnext<CR>zzzv')
-vimp.nnoremap('<leader>lp', ':lprev<CR>zzzv')
-vimp.nnoremap('<leader>ll', ':lwindow<CR>')
 
 -- fuzzy finder (telescope)
 vimp.nnoremap('<leader><leader>', require'telescope.builtin'.find_files)
 vimp.nnoremap('<leader>b', require'telescope.builtin'.buffers)
 vimp.nnoremap('<leader>f', require'telescope.builtin'.live_grep)
 
--- fugitive
-vimp.nnoremap('<leader>g', ':Git<CR>')
+-- git
+vimp.nnoremap('<leader>gg', ':Git<CR>')
+vimp.nnoremap('<leader>gp', ':Gitsigns preview_hunk<CR>')
+vimp.nnoremap('<leader>gr', ':Gitsigns reset_hunk<CR>')
+vimp.nnoremap('<leader>gs', ':Gitsigns stage_hunk<CR>')
+vimp.nnoremap('<leader>gu', ':Gitsigns undo_stage_hunk<CR>')
+vimp.nnoremap('<leader>gd', ':Gitsigns diffthis<CR>')
 
 -- LSP
 vimp.nnoremap({'silent'}, ',,', vim.lsp.buf.hover)
