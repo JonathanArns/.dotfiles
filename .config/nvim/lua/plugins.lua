@@ -1,6 +1,5 @@
 return require('lazy').setup({
     'folke/lazy.nvim',
-    'svermeulen/vimpeccable',
     'mbbill/undotree',
     'tpope/vim-eunuch',
     'tpope/vim-fugitive',
