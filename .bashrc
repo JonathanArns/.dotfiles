@@ -1,6 +1,6 @@
 export EDITOR='nvim'
 
-alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME -c user.name="JonathanArns" -c user.email="jonathan.arns@googlemail.com"'
 alias icat='kitty +kitten icat --align=left'
 alias ssh='kitty +kitten ssh'
 alias vim='nvim'
