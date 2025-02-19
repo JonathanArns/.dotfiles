@@ -11,4 +11,4 @@ def handle_result(args, result, target_window_id, boss):
     if cmd == "switch":
         boss.active_tab.neighboring_window(direction)
     if cmd == "resize":
-        boss.active_tab.resize_window(direction, 1)
+        boss.active_tab.resize_window(direction, 2)

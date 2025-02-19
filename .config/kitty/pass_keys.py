@@ -42,4 +42,4 @@ def handle_result(args, result, target_window_id, boss):
     elif action == "neighboring_window":
         boss.active_tab.neighboring_window(direction)
     elif action == "resize_window":
-        boss.active_tab.resize_window(direction, 1)
+        boss.active_tab.resize_window(direction, 2)
