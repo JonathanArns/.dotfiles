@@ -38,6 +38,9 @@ vim.keymap.set('n', '<leader>cc', ':cwindow<CR>', { noremap = true })
 vim.keymap.set('n', '<leader><leader>', require'telescope.builtin'.find_files, { noremap = true })
 vim.keymap.set('n', '<leader>b', require'telescope.builtin'.buffers, { noremap = true })
 vim.keymap.set('n', '<leader>f', require'telescope.builtin'.live_grep, { noremap = true })
+vim.keymap.set('v', '<leader>f', require'telescope.builtin'.grep_string, { noremap = true })
+vim.keymap.set('n', '<leader>q', require'telescope.builtin'.quickfix, { noremap = true })
+vim.keymap.set('n', '<leader>r', require'telescope.builtin'.resume, { noremap = true })
 
 -- git
 vim.keymap.set('n', '<leader>gg', ':Git<CR>', { noremap = true })
@@ -55,6 +58,7 @@ vim.keymap.set('n', ',i', vim.lsp.buf.implementation, { noremap = true, silent =
 vim.keymap.set('n', ',r', vim.lsp.buf.references, { noremap = true, silent = true })
 vim.keymap.set('n', ',R', vim.lsp.buf.rename, { noremap = true, silent = true })
 vim.keymap.set('n', ',f', function() vim.lsp.buf.format({async = true}) end, { noremap = true, silent = true })
+
 -- diagnostics
 vim.keymap.set('n', ',n', vim.diagnostic.goto_next, { noremap = true, silent = true })
 vim.keymap.set('n', ',p', vim.diagnostic.goto_prev, { noremap = true, silent = true })
