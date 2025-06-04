@@ -31,15 +31,44 @@ return require('lazy').setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function() require'plugins.gitsigns' end
     },
+    -- {
+    --     'hrsh7th/nvim-cmp',
+    --     event = "InsertEnter",
+    --     dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lua', 'dcampos/nvim-snippy', 'dcampos/cmp-snippy' },
+    --     config = function() require'plugins.cmp' end,
+    -- },
+    -- {
+    --     'ray-x/lsp_signature.nvim',
+    --     config = function() require'plugins.lsp_signature' end
+    -- },
     {
-        'hrsh7th/nvim-cmp',
-        event = "InsertEnter",
-        dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lua', 'dcampos/nvim-snippy', 'dcampos/cmp-snippy' },
-        config = function() require'plugins.cmp' end,
-    },
-    {
-        'ray-x/lsp_signature.nvim',
-        config = function() require'plugins.lsp_signature' end
+        'saghen/blink.cmp',
+        -- optional: provides snippets for the snippet source
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        -- use a release tag to download pre-built binaries
+        version = '1.*',
+        opts = {
+            -- See :h blink-cmp-config-keymap for defining your own keymap
+            keymap = {
+                preset = 'default',
+                ['<Tab>'] = { 'select_next', 'fallback' },
+                ['<S-Tab>'] = { 'select_prev', 'fallback' },
+                ['<CR>'] = { 'accept', 'fallback' },
+                ['<S-CR>'] = { 'cancel', 'fallback' },
+            },
+            appearance = {
+                nerd_font_variant = 'mono'
+            },
+            completion = {
+                documentation = { auto_show = true, auto_show_delay_ms = 500 },
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            fuzzy = { implementation = "prefer_rust_with_warning" },
+            signature = { enabled = true }
+        },
+        opts_extend = { "sources.default" }
     },
     {
         'nvim-telescope/telescope.nvim',

@@ -12,6 +12,7 @@ opt.scrolloff = 5
 opt.termguicolors = true
 opt.title = true
 opt.mouse = 'a'
+opt.winborder = 'none'
 vim.api.nvim_set_option('clipboard','unnamed')
 
 -- tabs
@@ -36,7 +37,7 @@ opt.autowriteall = true
 opt.autoread = true
 opt.undofile = true
 
--- turn off highlightin in json files
+-- turn off highlighting in json files
 vim.cmd[[autocmd Filetype json setlocal syntax=OFF]]
 
 -- configure how diagnostics are shown
@@ -44,6 +45,7 @@ vim.diagnostic.config({
     underline = true,
     signs = true,
     virtual_text = true,
+    virtual_lines = false,
     float = {
         show_header = true,
         source = 'always',
