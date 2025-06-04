@@ -31,16 +31,6 @@ return require('lazy').setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function() require'plugins.gitsigns' end
     },
-    -- {
-    --     'hrsh7th/nvim-cmp',
-    --     event = "InsertEnter",
-    --     dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lua', 'dcampos/nvim-snippy', 'dcampos/cmp-snippy' },
-    --     config = function() require'plugins.cmp' end,
-    -- },
-    -- {
-    --     'ray-x/lsp_signature.nvim',
-    --     config = function() require'plugins.lsp_signature' end
-    -- },
     {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
@@ -76,16 +66,15 @@ return require('lazy').setup({
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = "master",
+        lazy = false,
+        build = ":TSUpdate",
         config = function() require'plugins.treesitter' end
     },
     {
         'windwp/nvim-autopairs',
         after = 'nvim-treesitter',
         config = function() require'plugins.autopairs' end
-    },
-    {
-        'numToStr/Comment.nvim',
-        config = function() require'plugins.comment' end
     },
     {
         'airblade/vim-rooter',

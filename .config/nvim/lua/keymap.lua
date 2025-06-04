@@ -65,5 +65,5 @@ vim.keymap.set('n', ',p', vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set('n', ',D', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 -- completion
-vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
-vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+-- vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+-- vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
