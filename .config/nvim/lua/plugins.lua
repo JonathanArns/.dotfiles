@@ -5,11 +5,18 @@ return require('lazy').setup({
     'tpope/vim-fugitive',
     'tpope/vim-surround',
     'tpope/vim-repeat',
-    'neovim/nvim-lspconfig',
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
     'Darazaki/indent-o-matic',
     'jghauser/mkdir.nvim',
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = {"rust_analyzer", "lua_ls"}
+        },
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            { "mason-org/mason.nvim", opts = {} },
+        }
+    },
     { 'j-hui/fidget.nvim', opts = {} },
     { 'simrat39/rust-tools.nvim', lazy = true },
     { 'kyazdani42/nvim-web-devicons', lazy = true },
@@ -29,16 +36,18 @@ return require('lazy').setup({
     {
         'lewis6991/gitsigns.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function() require'plugins.gitsigns' end
+        config = function()
+            require'gitsigns'.setup {
+                current_line_blame = true
+            }
+        end
     },
     {
         'saghen/blink.cmp',
-        -- optional: provides snippets for the snippet source
         dependencies = { 'rafamadriz/friendly-snippets' },
         -- use a release tag to download pre-built binaries
         version = '1.*',
         opts = {
-            -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = {
                 preset = 'default',
                 ['<Tab>'] = { 'select_next', 'fallback' },
