@@ -45,7 +45,6 @@ return require('lazy').setup({
     {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
-        -- use a release tag to download pre-built binaries
         version = '1.*',
         opts = {
             keymap = {
@@ -88,8 +87,8 @@ return require('lazy').setup({
     {
         'airblade/vim-rooter',
         config = function()
-            vim.g.rooter_targets = '/,*'
-            vim.g.rooter_patterns = { 'Cargo.toml', 'go.mod', '.git', '>workspace', 'Makefile', '>.config' }
+            vim.g.rooter_targets = { '/', '*' }
+            vim.g.rooter_patterns = { '.git', '>workspace', '>.config' }
             vim.g.rooter_buftypes = { '' }
         end
     },
