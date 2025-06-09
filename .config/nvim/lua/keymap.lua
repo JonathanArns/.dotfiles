@@ -69,3 +69,15 @@ vim.keymap.set('n', ',D', vim.diagnostic.open_float, { noremap = true, silent = 
 -- completion
 -- vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 -- vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
+
+-- ericsson specific
+function indent(mode)
+    local line_num = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win())[1]
+    vim.cmd(":w")
+    vim.cmd(string.format(":! ~/erlang-indent.sh %s %% %i", mode, line_num))
+end
+vim.keymap.set('n', ',ee', function() indent("file") end, { noremap = true })
+vim.keymap.set('n', ',ef', function() indent("function") end, { noremap = true })
+vim.keymap.set('n', ',ec', function() indent("clause") end, { noremap = true })
+vim.keymap.set('n', ',el', function() indent("line") end, { noremap = true })
