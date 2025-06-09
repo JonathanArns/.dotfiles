@@ -7,10 +7,7 @@ return require('lazy').setup({
     'jghauser/mkdir.nvim',
     {
         "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = {"rust_analyzer", "lua_ls"},
-			automatic_enable = true
-        },
+        config = function () require'plugins.lsp' end,
         dependencies = {
             "neovim/nvim-lspconfig",
             { "mason-org/mason.nvim", opts = {} },
@@ -52,15 +49,15 @@ return require('lazy').setup({
         config = function() require'plugins.treesitter' end
     },
     {
-		'lukas-reineke/indent-blankline.nvim',
-		after = 'nvim-treesitter',
-		main = 'ibl',
-		opts = {}
-	},
+        'lukas-reineke/indent-blankline.nvim',
+        after = 'nvim-treesitter',
+        main = 'ibl',
+        opts = {}
+    },
     {
         'windwp/nvim-autopairs',
         after = 'nvim-treesitter',
-		opts = { check_ts = true }
+        opts = { check_ts = true }
     },
     {
         'airblade/vim-rooter',
