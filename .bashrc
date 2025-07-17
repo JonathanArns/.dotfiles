@@ -20,3 +20,15 @@ set -o vi
 
 PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
 export PS1="\[\033[38;5;190m\]\u\[$(tput sgr0)\]@\h \[\033[38;5;34m\]\$PS1_PATH\[$(tput sgr0)\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')> "
+
+
+
+
+# ericsson
+export GTE_VARS_FILE="/home/eonnraj/opt/.gte_deps_vars"
+source "/home/eonnraj/opt/config_gte_env.sh"
+
+alias vnc='vncviewer -RemoteResize=0 -FullScreen -Maximize -FullColour=0 -DotWhenNoCursor localhost:8'
+
+export ELP_EQWALIZER_PATH=/home/eonnraj/workspace/eqwalizer/eqwalizer/target/scala-3.6.4/eqwalizer.jar
+
