@@ -18,7 +18,6 @@ return require('lazy').setup({
         }
     },
     { 'j-hui/fidget.nvim', opts = {} },
-    { 'simrat39/rust-tools.nvim', lazy = true },
     { 'kyazdani42/nvim-web-devicons', lazy = true },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
     {
