@@ -40,6 +40,15 @@ function setup_dotfiles() {
 	alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME -c user.name="JonathanArns" -c user.email="jonathan.arns@googlemail.com"'
 }
 
+function setup_ericsson() {
+	export GTE_VARS_FILE="/home/eonnraj/opt/.gte_deps_vars"
+	source "/home/eonnraj/opt/config_gte_env.sh"
+
+	alias vnc='vncviewer -RemoteResize=0 -FullScreen -Maximize -FullColour=0 -DotWhenNoCursor localhost:8'
+
+	export ELP_EQWALIZER_PATH=/home/eonnraj/workspace/eqwalizer/eqwalizer/target/scala-3.6.4/eqwalizer.jar
+}
+
 # ========== host specific configs ===========
 
 function setup_laptop() {
@@ -55,11 +64,22 @@ function setup_unknown_host() {
 	generic
 }
 
+function setup_elx() {
+	generic
+	setup_kitty
+	setup_dotfiles
+	setup_nvim
+	setup_rust
+	setup_golang
+}
+
 # =================== main ===================
 
 case $(hostname) in
 	fedora)
 		setup_laptop ;;
+	"elx*")
+		setup_elx ;;
 	*)
 		setup_unknown_host ;;
 esac
