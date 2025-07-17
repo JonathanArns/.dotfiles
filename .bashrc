@@ -12,6 +12,9 @@ alias llt='ls -lt'
 PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/go/bin
+PATH=$PATH:~/.local/share/nvim/mason/bin
+
+source "$HOME/.cargo/env"
 
 set -o vi
 
