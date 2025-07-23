@@ -14,14 +14,6 @@ return require('lazy').setup({
                 ensure_installed = {"rust_analyzer", "lua_ls", "elp"},
                 automatic_enable = true
             }
-            vim.lsp.config('elp', {
-                cmd = {
-                    'elp',
-                    '--erl', '/home/eonnraj/opt/otp/OTP-27.3.4/x86_64-pc-linux-gnu/bin/erl',
-                    '--escript', '/home/eonnraj/opt/otp/OTP-27.3.4/x86_64-pc-linux-gnu/bin/escript',
-                    'server'
-                }
-            })
         end,
         dependencies = {
             "neovim/nvim-lspconfig",
