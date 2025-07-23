@@ -43,9 +43,11 @@ function setup_dotfiles() {
 function setup_ericsson() {
 	export GTE_VARS_FILE="/home/eonnraj/opt/.gte_deps_vars"
 	source "/home/eonnraj/opt/config_gte_env.sh"
+	gte_env
 
 	alias vnc='vncviewer -RemoteResize=0 -FullScreen -Maximize -FullColour=0 -DotWhenNoCursor localhost:8'
 
+	# for building elp from source
 	export ELP_EQWALIZER_PATH=/home/eonnraj/workspace/eqwalizer/eqwalizer/target/scala-3.6.4/eqwalizer.jar
 }
 
