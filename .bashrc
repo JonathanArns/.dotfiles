@@ -46,6 +46,8 @@ function setup_ericsson() {
 	gte_env
 
 	alias vnc='vncviewer -RemoteResize=0 -FullScreen -Maximize -FullColour=0 -DotWhenNoCursor localhost:8'
+	alias gitpush='git push --signed=if-asked origin HEAD:refs/for/master'
+	alias gitpushwip='git push --signed=if-asked origin HEAD:refs/for/master%wip'
 
 	# for building elp from source
 	export ELP_EQWALIZER_PATH=/home/eonnraj/workspace/eqwalizer/eqwalizer/target/scala-3.6.4/eqwalizer.jar
