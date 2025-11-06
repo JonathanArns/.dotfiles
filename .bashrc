@@ -14,6 +14,13 @@ function generic() {
 
 	PATH=$PATH:~/.local/bin
 }
+function vncserv() {
+	if [[ $(hostname) == "seliics03003" ]]; then
+		vncserver :7 -alwaysshared -localhost -geometry 1920x1080 -SecurityTypes None -- cinnamon-session
+	else
+		echo "only start vnc sessions on mob server"
+	fi
+}
 
 function setup_rust() {
 	PATH=$PATH:~/.cargo/bin

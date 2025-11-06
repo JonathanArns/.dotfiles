@@ -9,11 +9,34 @@ return require('lazy').setup({
     'jghauser/mkdir.nvim',
     {
         "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = {"rust_analyzer", "lua_ls"}
+        },
         config = function ()
             require'mason-lspconfig'.setup {
                 ensure_installed = {"rust_analyzer", "lua_ls", "elp"},
                 automatic_enable = true
             }
+            vim.lsp.config('elp', {
+                cmd = {
+                    -- 'elp',
+                    '/home/eonnraj/.local/share/nvim/mason/packages/elp-25-07-21/elp',
+                    -- '/home/eonnraj/workspace/erlang-language-platform/target/debug/elp',
+                    'server'
+                },
+                settings = {
+                    elp = {
+                        eqwalizer = {
+                            all = false,
+                            maxTasks = 0
+                        },
+                        diagnostics = {
+                            -- W0038: edoc syntax deprecation warning
+                            disabled = { "W0038" }
+                        }
+                    }
+                }
+            })
         end,
         dependencies = {
             "neovim/nvim-lspconfig",
@@ -21,7 +44,7 @@ return require('lazy').setup({
         }
     },
     { 'j-hui/fidget.nvim', opts = {} },
-    { 'kyazdani42/nvim-web-devicons', lazy = true },
+    { 'nvim-tree/nvim-web-devicons', opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
     {
         'srcery-colors/srcery-vim',
@@ -51,8 +74,8 @@ return require('lazy').setup({
         opts = {
             keymap = {
                 preset = 'default',
-                ['<Tab>'] = { 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'select_prev', 'fallback' },
+                ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
                 ['<CR>'] = { 'accept', 'fallback' },
                 ['<S-CR>'] = { 'cancel', 'fallback' },
             },
@@ -61,6 +84,7 @@ return require('lazy').setup({
             },
             completion = {
                 documentation = { auto_show = true, auto_show_delay_ms = 500 },
+                trigger = { show_in_snippet = false },
             },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
