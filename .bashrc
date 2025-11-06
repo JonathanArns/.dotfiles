@@ -27,6 +27,7 @@ function setup_kitty() {
 
 function setup_nvim() {
 	alias vim='nvim'
+	export EDITOR='nvim'
 	PATH=$PATH:~/.local/share/nvim/mason/bin
 }
 
