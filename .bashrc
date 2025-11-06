@@ -1,22 +1,64 @@
-export EDITOR='nvim'
+# ============ reusable snippets ============
 
-alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME -c user.name="JonathanArns" -c user.email="jonathan.arns@googlemail.com"'
-alias icat='kitty +kitten icat --align=left'
-alias ssh='kitty +kitten ssh'
-alias vim='nvim'
-alias la='ls -la'
-alias ll='ls -l'
-alias lat='ls -lat'
-alias llt='ls -lt'
+function generic() {
+	PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
+	export PS1="\[\033[38;5;190m\]\u\[$(tput sgr0)\]@\h \[\033[38;5;34m\]\$PS1_PATH\[$(tput sgr0)\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')> "
 
-PATH=$PATH:~/.local/bin
-PATH=$PATH:~/.cargo/bin
-PATH=$PATH:~/go/bin
-PATH=$PATH:~/.local/share/nvim/mason/bin
+	export EDITOR='vim'
+	set -o vi
 
-source "$HOME/.cargo/env"
+	alias la='ls -la'
+	alias ll='ls -l'
+	alias lat='ls -lat'
+	alias llt='ls -lt'
 
-set -o vi
+	PATH=$PATH:~/.local/bin
+}
 
-PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
-export PS1="\[\033[38;5;190m\]\u\[$(tput sgr0)\]@\h \[\033[38;5;34m\]\$PS1_PATH\[$(tput sgr0)\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')> "
+function setup_rust() {
+	PATH=$PATH:~/.cargo/bin
+	source "$HOME/.cargo/env"
+}
+
+function setup_kitty() {
+	alias icat='kitty +kitten icat --align=left'
+	alias ssh='kitty +kitten ssh'
+}
+
+function setup_nvim() {
+	alias vim='nvim'
+	PATH=$PATH:~/.local/share/nvim/mason/bin
+}
+
+function setup_golang() {
+	PATH=$PATH:~/go/bin
+	GOPATH=~/workspace
+}
+
+function setup_dotfiles() {
+	alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME -c user.name="JonathanArns" -c user.email="jonathan.arns@googlemail.com"'
+}
+
+# ========== host specific configs ===========
+
+function setup_laptop() {
+	generic
+	setup_kitty
+	setup_dotfiles
+	setup_nvim
+	setup_rust
+	setup_golang
+}
+
+function setup_unknown_host() {
+	generic
+}
+
+# =================== main ===================
+
+case "$(hostname)" in
+	"fedora")
+		setup_laptop ;;
+	*)
+		setup_unknown_host ;;
+esac
