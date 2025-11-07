@@ -86,6 +86,7 @@ function setup_elx() {
 	setup_nvim
 	setup_rust
 	setup_golang
+	setup_ericsson
 }
 
 # =================== main ===================
@@ -93,7 +94,7 @@ function setup_elx() {
 case $(hostname) in
 	fedora)
 		setup_laptop ;;
-	"elx*")
+	elx*)
 		setup_elx ;;
 	*)
 		setup_unknown_host ;;
