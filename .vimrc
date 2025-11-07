@@ -25,14 +25,14 @@ let mapleader = ' '
 nnoremap <leader>w :close<CR>
 nnoremap <leader>/ :vsplit<CR><C-w>l
 nnoremap <leader>- :split<CR><C-w>j
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-nnoremap <A-h> <C-w><
-nnoremap <A-j> <C-w>-
-nnoremap <A-k> <C-w>+
-nnoremap <A-l> <C-w>>
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+nnoremap <A-,> <C-w><
+nnoremap <A--> <C-w>-
+nnoremap <A-=> <C-w>+
+nnoremap <A-.> <C-w>>
 " move around lines in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
