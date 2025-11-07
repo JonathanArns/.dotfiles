@@ -14,13 +14,6 @@ function generic() {
 
 	PATH=$PATH:~/.local/bin
 }
-function vncserv() {
-	if [[ $(hostname) == "seliics03003" ]]; then
-		vncserver :7 -alwaysshared -localhost -geometry 1920x1080 -SecurityTypes None -- cinnamon-session
-	else
-		echo "only start vnc sessions on mob server"
-	fi
-}
 
 function setup_rust() {
 	PATH=$PATH:~/.cargo/bin
@@ -58,6 +51,13 @@ function setup_ericsson() {
 	function vnc() {
 		vncviewer -RemoteResize=0 -FullScreen -Maximize \
 			-FullColour=0 -DotWhenNoCursor -MenuKey=Home localhost:$1
+	}
+	function vncserv() {
+		if [[ $(hostname) == "seliics03003" ]]; then
+			vncserver :7 -alwaysshared -localhost -geometry 1920x1080 -SecurityTypes None -- cinnamon-session
+		else
+			echo "only start vnc sessions on mob server"
+		fi
 	}
 
 	# for building elp from source
