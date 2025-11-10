@@ -57,8 +57,8 @@ function setup_unknown_host() {
 
 # =================== main ===================
 
-case "$(hostname)" in
-	"fedora")
+case $(hostname) in
+	fedora)
 		setup_laptop ;;
 	*)
 		setup_unknown_host ;;
