@@ -40,24 +40,21 @@ function setup_dotfiles() {
 	alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME -c user.name="JonathanArns" -c user.email="jonathan.arns@googlemail.com"'
 }
 
+function gerrit_aliases() {
+	alias gitpush='git push --signed=if-asked origin HEAD:refs/for/master'
+	alias gitpushwip='git push --signed=if-asked origin HEAD:refs/for/master%wip'
+}
+
 function setup_ericsson() {
 	export GTE_VARS_FILE="/home/eonnraj/opt/.gte_deps_vars"
 	source "/home/eonnraj/opt/config_gte_env.sh"
 	gte_env
 
-	alias gitpush='git push --signed=if-asked origin HEAD:refs/for/master'
-	alias gitpushwip='git push --signed=if-asked origin HEAD:refs/for/master%wip'
+    gerrit_aliases
 
 	function vnc() {
 		vncviewer -RemoteResize=0 -FullScreen -Maximize \
 			-FullColour=0 -DotWhenNoCursor -MenuKey=Home localhost:$1
-	}
-	function vncserv() {
-		if [[ $(hostname) == "seliics03003" ]]; then
-			vncserver :7 -alwaysshared -localhost -geometry 1920x1080 -SecurityTypes None -- cinnamon-session
-		else
-			echo "only start vnc sessions on mob server"
-		fi
 	}
 
 	# for building elp from source
@@ -89,13 +86,49 @@ function setup_elx() {
 	setup_ericsson
 }
 
+function setup_teamserver() {
+    module add neovim/0.11.4
+    module add emacs
+
+    module use /proj/ltegte/modulefiles
+    module add gte
+
+    export GTETOP="/repo/$USER/git/gte-core"
+    export GTE_DEFAULT_LOGDIR="/repo/$USER/csimlogs"
+    export GTE_HOST_INCLUDE_IPV4_LOOPBACK=100
+    
+    PATH=$PATH:/proj/tgf_ki/dailytest/bin
+
+	function vncserv() {
+		if [[ $(hostname) == "seliics03003" ]]; then
+			vncserver :7 -alwaysshared -localhost -geometry 1920x1080 -SecurityTypes None -- cinnamon-session
+		else
+			echo "only start vnc sessions on mob server"
+		fi
+	}
+
+	generic
+	setup_nvim
+    gerrit_aliases
+}
+
 # =================== main ===================
 
 case $(hostname) in
 	fedora)
+		echo fedora
 		setup_laptop ;;
 	elx*)
+		echo elx
 		setup_elx ;;
+    seliiuts*)
+		if [[ "$KITTY_SSH_SETUP" == "done" ]]; then
+			echo teamserver
+			setup_teamserver
+		fi ;;
 	*)
-		setup_unknown_host ;;
+		if [[ "$KITTY_SSH_SETUP" == "done" ]]; then
+			echo generic
+			setup_unknown_host
+		fi ;;
 esac
