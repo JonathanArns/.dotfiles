@@ -12,13 +12,13 @@ return require('lazy').setup({
         opts = {
             ensure_installed = {"rust_analyzer", "lua_ls"}
         },
+        config = function () require'plugins.lsp' end,
         dependencies = {
             "neovim/nvim-lspconfig",
             { "mason-org/mason.nvim", opts = {} },
         }
     },
     { 'j-hui/fidget.nvim', opts = {} },
-    { 'kyazdani42/nvim-web-devicons', lazy = true },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
     {
         'srcery-colors/srcery-vim',
@@ -68,8 +68,9 @@ return require('lazy').setup({
         opts_extend = { "sources.default" }
     },
     {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-media-files.nvim' },
+        'ibhagwan/fzf-lua',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {}
     },
     {
         'nvim-treesitter/nvim-treesitter',

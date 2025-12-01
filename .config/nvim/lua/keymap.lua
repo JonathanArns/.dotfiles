@@ -21,6 +21,11 @@ vim.keymap.set('n', '<A-->', '<C-w>-', { noremap = true })
 vim.keymap.set('n', '<A-=>', '<C-w>+', { noremap = true })
 vim.keymap.set('n', '<A-.>', '<C-w>>', { noremap = true })
 
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
+
 
 -- buffers
 vim.keymap.set('v', 'P', 'p', { noremap = true })
@@ -34,15 +39,11 @@ vim.keymap.set('n', '<leader>cn', ':cnext<CR>zzzv', { noremap = true })
 vim.keymap.set('n', '<leader>cp', ':cprev<CR>zzzv', { noremap = true })
 vim.keymap.set('n', '<leader>cc', ':cwindow<CR>', { noremap = true })
 
--- fuzzy finder (telescope)
-vim.keymap.set('n', '<leader><leader>', function() require'telescope.builtin'.find_files({ hidden = true }) end, { noremap = true })
-vim.keymap.set('n', '<leader>a', function() require'telescope.builtin'.find_files({ hidden = true, no_ignore = true }) end, { noremap = true })
-vim.keymap.set('n', '<leader>gf', require'telescope.builtin'.git_commits, { noremap = true })
-vim.keymap.set('n', '<leader>b', require'telescope.builtin'.buffers, { noremap = true })
-vim.keymap.set('n', '<leader>f', require'telescope.builtin'.live_grep, { noremap = true })
-vim.keymap.set('v', '<leader>f', require'telescope.builtin'.grep_string, { noremap = true })
-vim.keymap.set('n', '<leader>q', require'telescope.builtin'.quickfix, { noremap = true })
-vim.keymap.set('n', '<leader>r', require'telescope.builtin'.resume, { noremap = true })
+-- fuzzy finder (fzf-lua)
+vim.keymap.set('n', '<leader><leader>', ':FzfLua files<CR>')
+vim.keymap.set('n', '<leader>b', ':FzfLua buffers<CR>')
+vim.keymap.set('n', '<leader>f', ':FzfLua live_grep<CR>')
+vim.keymap.set('n', '<leader>r', ':FzfLua resume<CR>')
 
 -- git
 vim.keymap.set('n', '<leader>gg', ':Git<CR>', { noremap = true })
