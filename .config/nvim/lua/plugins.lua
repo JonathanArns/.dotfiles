@@ -5,21 +5,20 @@ return require('lazy').setup({
     'tpope/vim-fugitive',
     'tpope/vim-surround',
     'tpope/vim-repeat',
-    'Darazaki/indent-o-matic',
     'jghauser/mkdir.nvim',
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = {"rust_analyzer", "lua_ls"}
+            ensure_installed = {"rust_analyzer", "lua_ls"},
+			automatic_enable = true
         },
-        config = function () require'plugins.lsp' end,
         dependencies = {
             "neovim/nvim-lspconfig",
             { "mason-org/mason.nvim", opts = {} },
         }
     },
+    { 'nvim-mini/mini.completion', version='*', opts = {} },
     { 'j-hui/fidget.nvim', opts = {} },
-    { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
     {
         'srcery-colors/srcery-vim',
         config = function()
@@ -42,32 +41,6 @@ return require('lazy').setup({
         end
     },
     {
-        'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-        version = '1.*',
-        opts = {
-            keymap = {
-                preset = 'default',
-                ['<Tab>'] = { 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'select_prev', 'fallback' },
-                ['<CR>'] = { 'accept', 'fallback' },
-                ['<S-CR>'] = { 'cancel', 'fallback' },
-            },
-            appearance = {
-                nerd_font_variant = 'mono'
-            },
-            completion = {
-                documentation = { auto_show = true, auto_show_delay_ms = 500 },
-            },
-            sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-            },
-            fuzzy = { implementation = "prefer_rust_with_warning" },
-            signature = { enabled = true }
-        },
-        opts_extend = { "sources.default" }
-    },
-    {
         'ibhagwan/fzf-lua',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {}
@@ -80,9 +53,15 @@ return require('lazy').setup({
         config = function() require'plugins.treesitter' end
     },
     {
+		'lukas-reineke/indent-blankline.nvim',
+		after = 'nvim-treesitter',
+		main = 'ibl',
+		opts = {}
+	},
+    {
         'windwp/nvim-autopairs',
         after = 'nvim-treesitter',
-        config = function() require'plugins.autopairs' end
+		opts = { check_ts = true }
     },
     {
         'airblade/vim-rooter',

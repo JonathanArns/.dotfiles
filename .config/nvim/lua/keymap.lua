@@ -21,12 +21,6 @@ vim.keymap.set('n', '<A-->', '<C-w>-', { noremap = true })
 vim.keymap.set('n', '<A-=>', '<C-w>+', { noremap = true })
 vim.keymap.set('n', '<A-.>', '<C-w>>', { noremap = true })
 
-vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
-
-
 -- buffers
 vim.keymap.set('v', 'P', 'p', { noremap = true })
 vim.keymap.set('v', 'p', '"_dP', { noremap = true }) -- don't yank replaced text after paste in visual mode
@@ -68,5 +62,5 @@ vim.keymap.set('n', ',p', vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set('n', ',D', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 -- completion
--- vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
--- vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+vim.keymap.set('i', '<C-j>', [[pumvisible() ? '<C-n>' : '<C-j>']], { expr = true })
+vim.keymap.set('i', '<C-k>', [[pumvisible() ? '<C-p>' : '<C-k>']], { expr = true })
