@@ -19,6 +19,7 @@ vim.api.nvim_set_option('clipboard','unnamed')
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.shiftround = true
+opt.expandtab = true
 opt.smarttab = true
 -- opt.autoindent = true
 -- opt.copyindent = true
