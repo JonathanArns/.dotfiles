@@ -68,7 +68,7 @@ function get_fingerprint {
 }
 
 window_type=$(kitten @ kitten get_window_type.py $window_id)
-if [[ $window_type != "application" ]]; then
+if [[ $window_type != "vim" ]]; then
 	kitten @ action $kitty_action
 	exit 0
 fi
