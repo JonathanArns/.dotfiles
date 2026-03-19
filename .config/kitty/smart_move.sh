@@ -59,6 +59,10 @@ case $direction in
 		fingerprint_kitten="get_hashed_window_text.py";;
 esac
 
+function vim_escape_to_normal {
+    kitten @ send-key --match id:$window_id "ESC"
+}
+
 function perform_vim_action {
 	kitten @ send-text --match id:$window_id "$1:echon ''\n"
 }
@@ -73,6 +77,7 @@ if [[ $window_type != "vim" ]]; then
 	exit 0
 fi
 
+vim_escape_to_normal
 fingerprint=$(get_fingerprint)
 perform_vim_action "$vim_action"
 sleep 0.01
