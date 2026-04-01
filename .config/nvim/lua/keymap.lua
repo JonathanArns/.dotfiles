@@ -26,7 +26,8 @@ vim.keymap.set('v', 'P', 'p')
 vim.keymap.set('v', 'p', '"_dP') -- don't yank replaced text after paste in visual mode
 
 -- undotree
-vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
+-- vim.cmd("packadd nvim.undotree")
+-- vim.keymap.set('n', '<leader>u', require('undotree').open)
 
 -- quickfix & location list
 vim.keymap.set('n', '<leader>cn', ':cnext<CR>zzzv')
