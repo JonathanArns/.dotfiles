@@ -1,19 +1,13 @@
-local present, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
-if not present then
-    return
-end
+local file_types = {'go','html','python','rust','lua','css','javascript','bash','erlang','markdown'}
+require('nvim-treesitter').install(file_types)
 
-nvim_treesitter.setup {
-    ensure_installed = {'go','html','vue','python','rust','lua','css','javascript','bash','erlang','markdown'},
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-    indent = {
-        enable = true
-    },
-}
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
 
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldlevel = 99
+vim.api.nvim_create_autocmd('FileType', { 
+    pattern = file_types,
+    callback = function() 
+        vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" 
+    end, 
+})
