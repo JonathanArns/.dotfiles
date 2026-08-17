@@ -8,9 +8,7 @@ function generic() {
 	set -o vi
 
 	alias la='ls -la'
-	alias ll='ls -l'
-	alias lat='ls -lat'
-	alias llt='ls -lt'
+	alias ll='ls -gtr'
 
 	PATH=$PATH:~/.local/bin
 }
