@@ -56,8 +56,9 @@ function setup_unknown_host() {
 # =================== main ===================
 
 case $(hostname) in
-	fedora)
+	jx1)
 		setup_laptop ;;
 	*)
 		setup_unknown_host ;;
 esac
+. "$HOME/.cargo/env"
