@@ -56,7 +56,7 @@ function setup_unknown_host() {
 # =================== main ===================
 
 case $(hostname) in
-	jx1)
+	jx1 | jx14)
 		setup_laptop ;;
 	*)
 		setup_unknown_host ;;
